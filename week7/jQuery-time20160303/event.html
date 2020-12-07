@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于Bootstrap3的带记事功能的全年日历插件</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-year-calendar.min.css">
+    <style type="text/css">
+        #calendar {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+    <!--[if IE]>
+        <script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<article class="jq22-container">
+    <header class="jq22-header">
+        <h1>基于Bootstrap3的带记事功能的全年日历插件 <span>A fully customizable year calendar widget, for boostrap</span></h1>
+
+        <div class="jq22-demo center">
+            <a href="index.html">Basic</a>
+            <a href="full-example.html">Full Example</a>
+            <a href="weeks-number.html">Weeks Number</a>
+            <a href="custom-day-rendering.html">Custom Day Rendering</a>
+            <a href="event.html" class="current">Event</a>
+            <a href="api.html">API</a>
+        </div>
+    </header>
+    <div id="calendar"></div>
+    <div class="panel panel-default" style="margin:10px;">
+        <div class="panel-heading">Logs</div>
+        <div class="panel-body">
+            Display :
+            <input type="checkbox" class="log-display" id="render-day"> Render day
+            <input type="checkbox" class="log-display" id="render-end" checked=""> Render end
+            <input type="checkbox" class="log-display" id="click" checked=""> Click
+            <input type="checkbox" class="log-display" id="contextmenu" checked=""> Context menu
+            <input type="checkbox" class="log-display" id="range" checked=""> Range selection
+            <input type="checkbox" class="log-display" id="mouse-on"> Mouse on
+            <input type="checkbox" class="log-display" id="mouse-out"> Mouse out
+
+            <div id="logs"
+                 style="border: 1px solid #ccc; height:200px;overflow-y:scroll;font-family:consolas; font-size:10pt">
+
+                <div class="render-end" style="color:#1C7C26">Render end (2015)</div>
+                <div class="range" style="color:#34A522">Select range (2015/9/1 -&gt; 2015/9/1)</div>
+                <div class="click" style="color:#1F80C1">Click (2015/9/1)</div>
+                <div class="range" style="color:#34A522">Select range (2015/9/9 -&gt; 2015/9/9)</div>
+                <div class="click" style="color:#1F80C1">Click (2015/9/9)</div>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-year-calendar.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-popover.js"></script>
+<script type="text/javascript" class="publish">
+    function refreshLog() {
+        $("#logs").scrollTop($("#logs")[0].scrollHeight);
+    }
+
+    $(function () {
+        $('#calendar').calendar({
+            enableRangeSelection: true,
+            renderEnd: function (e) {
+                if ($('#render-end').prop('checked')) {
+                    $('#logs').append('<div class="render-end" style="color:#1C7C26">Render end (' + e.currentYear + ')</div');
+                    refreshLog();
+                }
+            },
+            renderDay: function (e) {
+                if ($('#render-day').prop('checked')) {
+                    $('#logs').append('<div class="render-day" style="color:#FF5B9D">Render day (' + e.date.toLocaleDateString() + ')</div');
+                    refreshLog();
+                }
+            },
+            clickDay: function (e) {
+                if ($('#click').prop('checked')) {
+                    $('#logs').append('<div class="click" style="color:#1F80C1">Click (' + e.date.toLocaleDateString() + ')</div');
+                    refreshLog();
+                }
+            },
+            dayContextMenu: function (e) {
+                if ($('#contextmenu').prop('checked')) {
+                    $('#logs').append('<div class="contextmenu" style="color:#9D29B2">Context menu (' + e.date.toLocaleDateString() + ')</div');
+                    refreshLog();
+                }
+            },
+            selectRange: function (e) {
+                if ($('#range').prop('checked')) {
+                    $('#logs').append('<div class="range" style="color:#34A522">Select range (' + e.startDate.toLocaleDateString() + ' -> ' + e.endDate.toLocaleDateString() + ')</div');
+                    refreshLog();
+                }
+            },
+            mouseOnDay: function (e) {
+                if ($('#mouse-on').prop('checked')) {
+                    $('#logs').append('<div class="mouse-on" style="color:#F95902">Mouse on (' + e.date.toLocaleDateString() + ')</div');
+                    refreshLog();
+                }
+            },
+            mouseOutDay: function (e) {
+                if ($('#mouse-out').prop('checked')) {
+                    $('#logs').append('<div class="mouse-out" style="color:#F90202">Mouse out (' + e.date.toLocaleDateString() + ')</div');
+                    refreshLog();
+                }
+            },
+            dataSource: [
+                {
+                    startDate: new Date(new Date().getFullYear(), 1, 4),
+                    endDate: new Date(new Date().getFullYear(), 1, 15)
+                },
+                {
+                    startDate: new Date(new Date().getFullYear(), 3, 5),
+                    endDate: new Date(new Date().getFullYear(), 5, 15)
+                }
+            ]
+        });
+
+        $('.log-display').click(function () {
+            refreshLog();
+        });
+    });
+</script>
+</body>
+</html>

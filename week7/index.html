@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //     实现浅拷贝
+    //     引用类型(如数组、对象):通过变量赋值即可实现。
+    //     提示:浅拷贝是引用类型中才有的概念。
+    //     浅拷贝的优势
+    //     浅拷贝可以节省内存开销。
+    function deepCopy(obj) {
+        var o = {};
+        for (var k in obj) {
+            o[k] = (typeof obj[k] === 'object') ? deepCopy(obj[k]) : obj[k];
+        }
+        return o;
+    }
+
+    var a = {
+        name: 'Jim',
+        subject: {
+            name: ['Html', 'Css']
+        }
+    };
+    var b = deepCopy(a);
+    b.subject.name[0] = 'JS';
+    console.log(a.subject.name[0]);
+    console.log(b.subject.name[0]);
+    console.log(a === b);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文本框及文本区</title>
+</head>
+<body>
+<script type="text/javascript">
+    /* 表单中有多种元素为input标签元素，类型type诸如text、password、radio、checkbox等。
+       每个input元素都对应一个HTMLInputElement类型的对象，因type不同，各对象的属性会有所不同。
+         - 有些属性是所有input通用的：name,value,disabled,required;
+         - 有些属性是专为特定type的input定义的:
+            比如checked defaultChecked是为type为radio或checkbox元素对象定义的，
+            再比如placeholder、maxLength、readOnly、size是转为type为text的文本框控件定义的，
+            再比如files是为type为fileUpload的元素定义的。
+
+       具体HTMLInputElement定义可参考（继承自常规的HTML元素接口，提供了特定的属性和方法，
+       用于管理输入元素的布局、外观和内容）：
+          https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLInputElement */
+
+    /*input中最常见的是text类型的文本框,用于用户输入文本信息。其重要的属性和方法如下：
+       1）属性
+           defaultValue: 设置或返回文本域的默认值。
+           disabled:     设置或返回文本域是否应被禁用。
+           form:         返回一个对包含文本域的表单对象的引用。
+           id:           设置或返回文本域的 id。
+           maxLength:    设置或返回文本域中的最大字符数。
+           name:         设置或返回文本域的名称。
+           readOnly:     设置或返回文本域是否应是只读的。
+           size:         设置或返回文本域的尺寸。
+           value:        设置或返回文本域的 value 属性的值。
+     2) 方法
+           blur():       从文本域上移开焦点。
+           focus():      在文本域上设置焦点。
+           select():     选取文本域中的内容。
+     3) 事件句柄
+           onblur:       失去焦点时触发该事件。
+           onfocus:      得到焦点时触发该事件。  */
+
+    window.onload = function () {
+        // console.dir(document.forms[0].elements[0]);
+        // console.dir(document.forms.form1.elements.text11);
+
+        // document.forms[0].elements[0].readOnly = true;
+
+        document.forms[0].elements[0].focus();
+
+        document.forms[0].elements[0].onblur = function () {
+            document.getElementById("div1").innerHTML = `现在的值：${
+                document.forms[0].elements[0].value}
+                 ,缺省值为：${this.defaultValue}`
+        }
+
+        document.forms[0].elements.textarea11.onblur = function () {
+            this.form.elements[0].value = this.value;
+            //this.form.elements[0].disabled =true;
+        }
+
+        document.forms[0].elements.textarea11.onfocus = function () {
+            this.form.elements[0].value = this.value;
+            //     document.forms[0].elements[0].focus();
+            document.forms[0].elements[0].select();
+        }
+
+    }
+
+</script>
+<form name="form1" action="#">
+    第一个文本框：<br>
+    <hr>
+    <input id='text1' name='text11' type="text" size="20" maxlength="10" value="default"/>
+    <BR>
+    <hr>
+    文本区输入：<br>
+    <textarea id="textarea1" name='textarea11' rows="20">这个文档区</textarea>
+    <br>
+</form>
+
+
+<div id="div1"></div>
+</body>
+</html>

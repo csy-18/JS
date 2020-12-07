@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选择框</title>
+</head>
+<body>
+<script>
+    /* select元素对应HTMLSelectElement类型的对象
+     1）常用属性
+     disabled:    设置或返回是否应禁用下拉列表。
+     form:        返回对包含下拉列表的表单的引用。
+     id:          设置或返回下拉列表的 id。
+     length:      返回下拉列表中的选项数目。
+     multiple:    设置或返回是否选择多个项目。
+     name:        设置或返回下拉列表的名称。
+     selectedIndex:     设置或返回下拉列表中被选项目的索引号。
+     size:        设置或返回下拉列表中的可见行数。
+     options[]:   返回包含下拉列表中的所有选项的一个数组。
+
+     2)方法
+     add():       向下拉列表添加一个选项。
+     blur():      从下拉列表移开焦点。
+     focus():     在下拉列表上设置焦点。
+     remove():    从下拉列表中删除一个选项。
+
+     3) 事件：
+     onchange	当改变选择时调用的事件句柄。
+     * */
+    // window.onload = function () {
+    /**    console.log()会在浏览器控制台打印出信息
+     console.dir()可以显示一个对象的所有属性和方法**/
+
+    //         console.dir(document.forms.form1.elements.stars);
+    //         console.dir(document.forms.form1.elements.stars.multiple);
+    //         var select = document.forms.form1.elements.stars;
+    //         var select2 = document.forms.form1.elements.mystars;
+    //         select.onchange = function () {
+    //             var arr = [];
+    //             for (var i = 0; i < select.length; i++) {
+    //                 if (select[i].selected) {
+    //                     arr.push(select.options[i].value);
+    //                 }
+    //             }
+    //             console.log(arr, select.selectedIndex);
+    //         }
+    //
+    //         document.getElementById("btn1").onclick = function () {
+    //             var arr = [];
+    //             for (var i = 0; i < select.length; i++) {
+    //                 if (select[i].selected) {
+    //                     arr.push(select.options[i].value);
+    //                     select2.add(new Option(select.options[i].value, select.options[i].value));
+    // 					select.remove(i);
+    //                 }
+    //             }
+    // //             for (var i=0;i<select.length;i++) {
+    // //                 if (select[i].selected) {
+    // //
+    // //                     select.remove(i);
+    // //                     i--;
+    // //                 }
+    // //             }
+    //             console.log(arr, select.selectedIndex);
+    //         }
+    //     }
+
+
+</script>
+<form name="form1">
+    请选择你喜欢的歌星：<br>
+    <select name="stars" multiple size="5">
+        <option value="吴亦凡">吴亦凡</option>
+        <option value="李健">李健</option>
+        <option value="鹿晗">鹿晗</option>
+        <option value="刘德华" selected>刘德华</option>
+    </select><br>
+    <!--    我已选中的歌星：<br>-->
+    <!--    <select name="mystars" multiple size="5">-->
+    <!--    </select>-->
+    <!--    <input type="button" id="btn1" value="移动"/>-->
+    <input type="submit" value="提交">
+
+</form>
+</body>
+</html>

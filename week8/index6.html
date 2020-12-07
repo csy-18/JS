@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body onload="changered()">  <!--onload=""是body里的属性，用于调方法-->
+<div id="div1"></div>
+</body>
+<!--setTimeout()表示一次性定时器-->
+<script>
+    setTimeout(changered, 0);    /*设置最开始时间间隔为0*/
+    function changered() {
+        var div = document.getElementById("div1");
+        div.style.backgroundColor = "red";
+        setTimeout(changeyellow, 7000);/*红灯持续亮7秒*/
+
+    }
+
+    function changeyellow() {
+        var div = document.getElementById("div1");
+        div.style.backgroundColor = "yellow";
+        setTimeout(changegreen, 3000);
+
+    }
+
+    function changegreen() {
+        var div = document.getElementById("div1");
+        div.style.backgroundColor = "green";
+        setTimeout(changered, 5000);
+
+    }
+
+</script>
+</html>

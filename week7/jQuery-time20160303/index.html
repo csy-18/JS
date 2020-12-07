@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于Bootstrap3的带记事功能的全年日历插件</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-year-calendar.min.css">
+    <style type="text/css">
+        #calendar {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+    <!--[if IE]>
+        <script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<article class="jq22-container">
+    <header class="jq22-header">
+        <h1>基于Bootstrap3的带记事功能的全年日历插件 <span>A fully customizable year calendar widget, for boostrap</span></h1>
+
+        <div class="jq22-demo center">
+            <a href="index.html" class="current">Basic</a>
+            <a href="full-example.html">Full Example</a>
+            <a href="weeks-number.html">Weeks Number</a>
+            <a href="custom-day-rendering.html">Custom Day Rendering</a>
+            <a href="event.html">Event</a>
+            <a href="api.html">API</a>
+        </div>
+    </header>
+    <div id="calendar"></div>
+</article>
+
+
+<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-year-calendar.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-popover.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#calendar').calendar();
+    });
+</script>
+</body>
+</html>

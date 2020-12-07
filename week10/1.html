@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="app" action="a">
+    <label>
+        姓名：
+        <input type="text" value="陈思远" name="name">
+    </label>
+    <br>
+    性别：
+    <label>
+        男人：<input type="radio" name="gender" value="男人">
+        女人：<input type="radio" name="gender" value="女人">
+    </label>
+    <br>
+    <label>
+        不喜欢的运动：
+        跑步：<input type="checkbox" name="games" value="跑步"><br>
+        走路：<input type="checkbox" name="games" value="走路"><br>
+        跳远：<input type="checkbox" name="games" value="跳远"><br>
+        小跑：<input type="checkbox" name="games" value="小跑"><br>
+    </label>
+    <br>
+    不喜欢的运动：<br>
+    <select name="sport" multiple size="5">
+        <option name="sport" value="跑步">跑步</option>
+        <option name="sport" value="走路">走路</option>
+        <option name="sport" value="跳远">跳远</option>
+        <option name="sport" value="小跑" selected>小跑</option>
+    </select><br>
+    <input type="submit">
+    <script type="text/javascript">
+        window.onload = function () {
+            document.forms.app.onsubmit = function () {
+                var genders = document.forms[0].elements.gender;
+                var games = document.forms[0].elements.games;
+                var name = document.forms[0].elements.name;
+                var sports = document.forms[0].elements.sport;
+                alert(name.value)
+                for (var i = 0; i < genders.length; i++) {
+                    if (genders[i].checked) {
+                        alert("你是" + genders[i].value);
+                        break;
+                    }
+                }
+                for (var i = 0; i < games.length; i++) {
+                    if (games[i].checked) {
+                        alert("你不喜欢" + games[i].value);
+                        break;
+                    }
+                }
+                if (sports.checked) {
+                    alert(sports.value)
+                }
+
+            }
+        }
+    </script>
+
+</form>
+</body>
+</html>

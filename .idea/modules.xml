@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/OneDrive/文档/silver-journey/silver-journey/JS/.idea/JS.iml" filepath="$USER_HOME$/OneDrive/文档/silver-journey/silver-journey/JS/.idea/JS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JS.iml" filepath="$PROJECT_DIR$/JS.iml" />
     </modules>
   </component>
 </project>

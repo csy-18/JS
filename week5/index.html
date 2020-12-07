@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script language="javascript">
+        function aa() {
+            var m = 0;
+            var n = 0;
+            do {
+
+                var a = Math.floor(Math.random() * 9 + 1);
+                var b = Math.floor(Math.random() * 9 + 1);
+                var c = Math.floor(Math.random() * 9 + 1);
+                var str = String(a) + String(b) + String(c);
+                if (a == 8 || b == 8 || c == 8) {
+                    m++;
+                    flag = true;
+                } else {
+                    flag = false;
+                    n++;
+                }
+                if (flag == true) {
+                    v = confirm(str + "\n赢\n" + "胜率"
+                        + (Math.floor((m / (m + n)) * 100)) + "%，" + "想继续吗?");
+                }
+                if (flag == false) {
+                    v = confirm(str + "\n输\n" + "胜率"
+                        + (Math.floor((m / (m + n)) * 100)) + "%，" + "想继续吗?");
+                }
+            } while (v)
+        }
+    </script>
+</head>
+<body bgcolor="pink">
+<br/>
+<input type="button" name="" onclick="aa()" value="抽奖"/>
+</body>
+</html>

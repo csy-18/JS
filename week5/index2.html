@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" id="num1">
+<input type="button" value="+" onclick="add()">
+<input type="button" value="-" onclick="sub()">
+<input type="button" value="*" onclick="mul()">
+<input type="button" value="/" onclick="exc()">
+<input type="text" id="num2">
+结果：<input type="text" id="result">
+<script>
+    var result = document.getElementById("result").value;
+
+    function add() {
+        var a = document.getElementById("num1").value;
+        var b = document.getElementById("num2").value;
+        result = Number(a) + Number(b);
+        document.getElementById("result").value = result;
+    }
+
+    function sub() {
+        var a = document.getElementById("num1").value;
+        var b = document.getElementById("num2").value;
+        result = Number(a) - Number(b);
+        document.getElementById("result").value = result;
+    }
+
+    function mul() {
+        var a = document.getElementById("num1").value;
+        var b = document.getElementById("num2").value;
+        result = Number(a) * Number(b);
+        document.getElementById("result").value = result;
+    }
+
+    function exc() {
+        var a = document.getElementById("num1").value;
+        var b = document.getElementById("num2").value;
+        result = Number(a) / Number(b);
+        document.getElementById("result").value = result;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>复选框</title>
+</head>
+<body>
+<script>
+    /* input类型为checkbox时即为复选框，一般也以相同的name属性作为一组：
+     1）常用属性
+     checked:        设置或返回单选按钮的状态。
+     defaultChecked: 返回单选按钮的默认状态。
+     disabled:       设置或返回是否禁用单选按钮。
+     form:           返回一个对包含此单选按钮的表单的引用。
+     value:          设置或返回单选按钮的 value 属性的值。
+
+     2) 方法
+     blur():         从单选按钮移开焦点。
+     click():        在单选按钮上模拟一次鼠标点击。
+     focus():        为单选按钮赋予焦点。
+
+     3) 事件：
+     onblur:       失去焦点时触发该事件。
+     onfocus:      得到焦点时触发该事件。
+     onchange:     当checked状态发生改变且失去焦点时 */
+
+    window.onload = function () {
+        console.log(document.forms.firstForm.elements);
+        console.log(document.forms.firstForm.elements.games);
+        var games = document.forms.firstForm.elements.games;
+
+        document.forms.firstForm.onsubmit = function () {
+            var arr = [];
+            for (var i = 0; i < games.length; i++) {
+                if (games[i].checked == true) {
+                    arr.push(games[i].value);
+                }
+            }
+            alert("你选中的游戏有：" + arr);
+        }
+
+        document.forms.firstForm.elements.allgames.onchange = function () {
+            var currentallstate = this.checked;
+            //this.disabled=true;
+            var arr = [];
+            for (var i = 0; i < games.length; i++) {
+                games[i].checked = currentallstate;
+                if (games[i].checked == true) {
+                    arr.push(games[i].value);
+                }
+            }
+            alert("你选中的游戏有：" + arr);
+        }
+    }
+
+
+</script>
+<form id="firstForm" name="first">
+    你喜欢的游戏: <input type="checkbox" name="allgames"> 全选</input> <br/>
+
+
+    <input type="checkbox" name="games" value="AOE" checked> 帝国时代 </input> <BR/>
+    <input type="checkbox" name="games" value="My World"> 我的世界 </input> <BR/>
+    <input type="checkbox" name="games" value="Angry Bird"> 愤怒的小鸟 </input> <BR/>
+    <input type="checkbox" name="games" value="Cut Fruit" checked> 切水果 </input> <BR/>
+    <input type="submit">
+</form>
+</body>
+</html>

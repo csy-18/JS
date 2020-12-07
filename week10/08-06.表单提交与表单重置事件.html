@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /* 表单验证，和表单重置确认
+     1)当一个表单按下提交按钮后，在将表单内容提交到action之前，会触发onsubmit事件，
+       - 可以用这个onsubmit事件处理函数来执行表单提交前的验证工作。
+       - 该事件关注关联事件处理函数的返回值，只有该事件对应的处理函数返回true时才提交给action，
+        否则，不会执行提交动作。
+
+     2) 当一个表单按下重置按钮后，在重置表单前会触发onreset事件
+       - 所以onreset事件处理函数适于做表单重置的确认工作。
+       - 该事件关注关联事件处理函数的返回值，只有该事件对应的处理函数返回true时才会重置表单。 */
+    function verifydata() {
+        var reg = /[^\u4e00-\u9fa5]/g;
+        //正则表式: 非中文输入
+        if (reg.test(document.forms[0].elements.username.value)) {
+            alert(false);
+            return false;
+        } else {
+            alert(true);
+            return true;
+        }
+    }
+
+</script>
+
+<form name="Form1" action="submit.html" onsubmit="return verifydata()" onreset="return confirm('你确认要重置吗？')">
+    姓名：<br>
+    <input type="text" name="username" size="20" value="张三"/><BR>
+    性别：<br>
+    <input type="radio" name="gender" value="男">男</input>
+    <input type="radio" name="gender" value="女" checked>女</input>
+    <BR>爱好：<br>
+    <input type="checkbox" name="hobby" value="打游戏" checked>game</input><BR>
+    <input type="checkbox" name="hobby" value="看书">reading</input><BR>
+    <input type="checkbox" name="hobby" value="睡觉">sleeping</input><BR>
+    <input type="checkbox" name="hobby" value="理财">finance</input><BR>
+    选修课<br>
+    <select name="course" multiple size="4">
+        <option value="创新创业">创新创业</option>
+        <option value="股票投资">股票投资</option>
+        <option value="动漫">动漫</option>
+        <option value="Bootstrap框架">Bootstrap框架</option>
+    </select>
+    <input type="submit" value="提交"/>
+    <input type="reset" value="重置"/>
+</form>
+</body>
+</html>

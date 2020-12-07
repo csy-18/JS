@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    /* input类型为radio时即为单选框，一般以相同的name属性作为一组：
+      1）常用属性
+         checked:        设置或返回单选按钮的状态。
+         defaultChecked: 返回单选按钮的默认状态。
+         disabled:       设置或返回是否禁用单选按钮。
+         form:           返回一个对包含此单选按钮的表单的引用。
+         value:          设置或返回单选按钮的 value 属性的值。
+
+      2) 方法
+         blur():         从单选按钮移开焦点。
+         click():        在单选按钮上模拟一次鼠标点击。
+         focus():        为单选按钮赋予焦点。
+
+      3) 事件：
+         onblur:       失去焦点时触发该事件。
+         onfocus:      得到焦点时触发该事件。
+         onchange:     当checked状态发生改变且失去焦点时 */
+
+    window.onload = function () {
+        console.log(document.forms[0].elements.gender);
+        console.dir(document.forms[0].elements.gender[0]);
+
+        /*      document.forms[0].elements.gender[0].onchange = function () {
+                  alert(this.value);
+              }
+              document.forms[0].elements.gender[1].onfocus = function () {
+                  alert(this.value);
+              }*/
+        document.forms.form1.onsubmit = function () {
+            var genders = document.forms[0].elements.gender;
+            for (var i = 0; i < genders.length; i++) {
+                if (genders[i].checked) {
+                    alert("当前选中的是" + genders[i].value);
+                    break;
+                }
+            }
+
+            var clases = document.forms[0].elements.clas;
+            for (var i = 0; i < clases.length; i++) {
+                if (clases[i].checked) {
+                    alert("当前选中的是班级" + clases[i].value);
+                    break;
+                }
+            }
+        }
+
+    }
+
+</script>
+
+<form name="form1">
+    性别：<input type="radio" name="gender" value="man" checked>男
+    <input type="radio" name="gender" value="women">女
+    <hr>
+    班级：<input type="radio" name="clas" value="2016" checked>2016
+    <input type="radio" name="clas" value="2018">2018
+    <input type="radio" name="clas" value="2028">2028
+    <hr>
+    <input type="submit">
+
+</form>
+
+</body>
+</html>

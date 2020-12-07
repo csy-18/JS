@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于Bootstrap3的带记事功能的全年日历插件</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-year-calendar.min.css">
+    <style type="text/css">
+        #calendar {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+    <!--[if IE]>
+        <script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<article class="jq22-container">
+    <header class="jq22-header">
+        <h1>基于Bootstrap3的带记事功能的全年日历插件 <span>A fully customizable year calendar widget, for boostrap</span></h1>
+
+        <div class="jq22-demo center">
+            <a href="index.html">Basic</a>
+            <a href="full-example.html">Full Example</a>
+            <a href="weeks-number.html">Weeks Number</a>
+            <a href="custom-day-rendering.html">Custom Day Rendering</a>
+            <a href="event.html">Event</a>
+            <a href="api.html" class="current">API</a>
+        </div>
+    </header>
+    <div class="panel panel-default" style="margin:10px;">
+        <div class="panel-heading">Parameters</div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                        <label for="current-year" class="col-sm-3 col-xs-12 control-label">Current year</label>
+                        <div class="col-sm-5 col-xs-6">
+                            <input type="text" class="form-control" id="current-year" placeholder="Current year">
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="update-current-year" type="button" class="btn btn-success">Update</button>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="get-current-year" type="button" class="btn btn-primary">Get</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="min-date" class="col-sm-3 col-xs-12 control-label">Min date</label>
+                        <div class="col-sm-5 col-xs-6">
+                            <input type="date" class="form-control" id="min-date" placeholder="Min date">
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="update-min-date" type="button" class="btn btn-success">Update</button>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="get-min-date" type="button" class="btn btn-primary">Get</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="max-date" class="col-sm-3 col-xs-12 control-label">Max date</label>
+                        <div class="col-sm-5 col-xs-6">
+                            <input type="date" class="form-control" id="max-date" placeholder="Max date">
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="update-max-date" type="button" class="btn btn-success">Update</button>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="get-max-date" type="button" class="btn btn-primary">Get</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="style" class="col-sm-3 col-xs-12 control-label">Language</label>
+                        <div class="col-sm-5 col-xs-6">
+                            <select class="form-control" id="language">
+                                <option value="en">English</option>
+                                <option value="fr">French</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="update-language" type="button" class="btn btn-success">Update</button>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="get-language" type="button" class="btn btn-primary">Get</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                        <label for="style" class="col-sm-3 col-xs-12 control-label">Style</label>
+                        <div class="col-sm-5 col-xs-6">
+                            <label class="radio-inline"><input type="radio" name="style" id="style-border" checked="">
+                                Border</label>
+                            <label class="radio-inline"><input type="radio" name="style" id="style-background">
+                                Background</label>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="update-style" type="button" class="btn btn-success">Update</button>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="get-style" type="button" class="btn btn-primary">Get</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="style" class="col-sm-3 col-xs-12 control-label">Overlap</label>
+                        <div class="col-sm-5 col-xs-6">
+                            <label class="checkbox-inline"><input type="checkbox" id="allow-overlap" checked="">Allowed</label>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="update-overlap" type="button" class="btn btn-success">Update</button>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="get-overlap" type="button" class="btn btn-primary">Get</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="style" class="col-sm-3 col-xs-12 control-label">Range selection</label>
+                        <div class="col-sm-5 col-xs-6">
+                            <label class="checkbox-inline"><input type="checkbox"
+                                                                  id="enable-range-selection">Enabled</label>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="update-range-selection" type="button" class="btn btn-success">Update</button>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="get-range-selection" type="button" class="btn btn-primary">Get</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="style" class="col-sm-3 col-xs-12 control-label">Weeks number</label>
+                        <div class="col-sm-5 col-xs-6">
+                            <label class="checkbox-inline"><input type="checkbox"
+                                                                  id="display-week-number">Displayed</label>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="update-week-number" type="button" class="btn btn-success">Update</button>
+                        </div>
+                        <div class="col-sm-2 col-xs-3">
+                            <button id="get-week-number" type="button" class="btn btn-primary">Get</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="calendar"></div>
+
+</article>
+
+
+<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+<script src="js/bootstrap-datepicker.fr.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-year-calendar.min.js"></script>
+<script src="js/bootstrap-year-calendar.fr.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/bootstrap-popover.js"></script>
+<script type="text/javascript" class="publish">
+    $(function () {
+        $(function () {
+            $('#calendar').calendar({
+                dataSource: [
+                    {
+                        startDate: new Date(new Date().getFullYear(), 1, 4),
+                        endDate: new Date(new Date().getFullYear(), 1, 15)
+                    },
+                    {
+                        startDate: new Date(new Date().getFullYear(), 3, 5),
+                        endDate: new Date(new Date().getFullYear(), 5, 15)
+                    }
+                ]
+            });
+
+            $('#update-current-year').click(function () {
+                $('#calendar').data('calendar').setYear($('#current-year').val());
+            });
+
+            $('#get-current-year').click(function () {
+                alert($('#calendar').data('calendar').getYear());
+            });
+
+            $('#update-min-date').click(function () {
+                $('#calendar').data('calendar').setMinDate($('#min-date')[0].valueAsDate);
+            });
+
+            $('#get-min-date').click(function () {
+                alert($('#calendar').data('calendar').getMinDate());
+            });
+
+            $('#update-max-date').click(function () {
+                $('#calendar').data('calendar').setMaxDate($('#max-date')[0].valueAsDate);
+            });
+
+            $('#get-max-date').click(function () {
+                alert($('#calendar').data('calendar').getMaxDate());
+            });
+
+            $('#update-style').click(function () {
+                if ($('#style-border').prop('checked')) {
+                    $('#calendar').data('calendar').setStyle('border');
+                } else {
+                    $('#calendar').data('calendar').setStyle('background');
+                }
+            });
+
+            $('#get-style').click(function () {
+                alert($('#calendar').data('calendar').getStyle());
+            });
+
+            $('#update-overlap').click(function () {
+                $('#calendar').data('calendar').setAllowOverlap($('#allow-overlap').prop('checked'));
+            });
+
+            $('#get-overlap').click(function () {
+                alert($('#calendar').data('calendar').getAllowOverlap());
+            });
+
+            $('#update-range-selection').click(function () {
+                $('#calendar').data('calendar').setEnableRangeSelection($('#enable-range-selection').prop('checked'));
+            });
+
+            $('#get-range-selection').click(function () {
+                alert($('#calendar').data('calendar').getEnableRangeSelection());
+            });
+
+            $('#update-week-number').click(function () {
+                $('#calendar').data('calendar').setDisplayWeekNumber($('#display-week-number').prop('checked'));
+            });
+
+            $('#get-week-number').click(function () {
+                alert($('#calendar').data('calendar').getDisplayWeekNumber());
+            });
+
+            $('#update-language').click(function () {
+                $('#calendar').data('calendar').setLanguage($('#language').val());
+            });
+
+            $('#get-language').click(function () {
+                alert($('#calendar').data('calendar').getLanguage());
+            });
+
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>制作年历</title>
+    <style>
+        #box {
+            text-align: center;
+            width: 888px;
+            margin: 0px auto;
+            overflow: auto;
+        }
+
+        #box p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        table {
+            float: left;
+            margin: 20px;
+            text-align: center;
+        }
+
+        td {
+            width: 20px;
+        }
+
+        .title {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var year = parseInt(prompt('请输入年份', 2020));
+    document.write(calendar(year));
+
+    function calendar(y) {
+        var html = '<div id="box"><p>' + y + '年年历</p>';
+        var w = new Date(year, 0).getDay(); //获取指定年份1月1日对应的星期，0表示一月
+        console.log(w);
+        for (var m = 1; m <= 12; m++) {
+            var max = new Date(year, m, 0).getDate(); //获取每个月份的天数
+            html += '<table>';
+            html += '<tr class="title"><th colspan="7">' + y + '年' + m + '月' + '</th></tr>';
+            html += '<tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>';
+            html += '<tr>';
+            for (var d = 1; d <= max; d++) {
+                if (w && d == 1) //w不能为0（星期日） 并且 d必须等于1
+                {
+                    html += '<td colspan="' + w + '"></td>';
+                }
+                html += '<td>' + d + '</td>';
+                if (w == 6 && d != max) {
+                    html += '</tr><tr>';
+                } else if (d == max) {
+                    html += '</tr>'
+                }
+                w = (w + 1 > 6) ? 0 : w + 1;
+            }
+            html += '</tr>';
+        }
+        html += '</table>';
+        html += '</div>';
+        return html;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>简易单面板日历</title>
+    <meta name="author" content="(zjp)张继朋,2018年6月"/>
+    <link rel="stylesheet" href="css/laydate.css"/>
+    <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/laydate.js"></script>
+
+</head>
+<body>
+<div class="laydate-box">
+    <input type="text" id="laydateInput" placeholder="xxxx年xx月xx日"/>
+    <img src="images/calendar.png" alt="" class="icon data-icon"/>
+    <div class="select-date">
+        <div class="select-date-header">
+            <ul class="heade-ul">
+                <li class="header-item header-item-one">
+                    <select name="" id="yearList"></select>
+                </li>
+                <li class="header-item header-item-two" onselectstart="return false">
+                    <select name="" id="monthList"></select>
+                </li>
+                <li class="header-item header-item-three" onselectstart="return false">
+                    <span class="reback">回到今天</span>
+                </li>
+            </ul>
+        </div>
+        <div class="select-date-body">
+            <ul class="week-list">
+                <li>日</li>
+                <li>一</li>
+                <li>二</li>
+                <li>三</li>
+                <li>四</li>
+                <li>五</li>
+                <li>六</li>
+            </ul>
+            <ul class="day-tabel"></ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function getSelectDate(result) {
+        //这里获取选择的日期
+        console.log(result);
+    }
+</script>
+</body>
+</html>
