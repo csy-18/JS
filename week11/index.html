@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #red{
+            width: 500px;
+            height: 500px;
+            border-radius:50%;
+            background-image: repeating-linear-gradient(-90deg,#61c4ca,#37b9e9);
+        }
+        #green{
+            background: #1C7C26;
+            width: 300px;
+            height: 300px;
+            border-radius:50%
+        }
+        #yellow{
+            background: yellow;
+            width: 100px;
+            height: 100px;
+            border-radius:50%
+        }
+    </style>
+</head>
+<body>
+<div id="red">
+<!--    <div id="green">-->
+<!--        <div id="yellow"></div>-->
+<!--    </div>-->
+</div>
+<script>
+    var red = document.getElementById('red')
+    var green = document.getElementById('green')
+    var yellow = document.getElementById('yellow')
+
+    red.onclick=function (){
+        console.log('red')
+    }
+
+</script>
+</body>
+</html>
